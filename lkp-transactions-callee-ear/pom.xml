@@ -18,6 +18,17 @@
             <version>9.0.0-SNAPSHOT</version>
             <type>war</type>
         </dependency>
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>lkp-transactions-callee-ejb</artifactId>
+            <version>9.0.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>lkp-transactions-common</artifactId>
+            <version>9.0.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 
@@ -27,6 +38,17 @@
                 <artifactId>maven-ear-plugin</artifactId>
                 <configuration>
                     <modules>
+                        <jarModule>
+                            <groupId>ru.lanit.lkp</groupId>
+                            <artifactId>lkp-transactions-common</artifactId>
+                            <bundleFileName>lkp-transactions-common.jar</bundleFileName>
+                            <moduleId>lkp-transactions-common</moduleId>
+                        </jarModule>
+                        <ejbModule>
+                            <groupId>ru.lanit.lkp</groupId>
+                            <artifactId>lkp-transactions-callee-ejb</artifactId>
+                            <bundleFileName>lkp-transactions-callee.jar</bundleFileName>
+                        </ejbModule>
                         <webModule>
                             <groupId>ru.lanit.lkp</groupId>
                             <artifactId>lkp-transactions-callee-web</artifactId>

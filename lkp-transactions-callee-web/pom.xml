@@ -30,6 +30,14 @@
             <version>9.0.0-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>lkp-transactions-callee-ejb</artifactId>
+            <version>9.0.0-SNAPSHOT</version>
+            <type>ejb</type>
+            <classifier>client</classifier>
+        </dependency>
+
         <!-- Это нужно для jax-ws т.к. из Java11 они все убраны  -->
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
@@ -58,9 +66,17 @@
             </exclusions>
         </dependency>
 
-
-
-
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
             <groupId>io.jsonwebtoken</groupId>

@@ -20,6 +20,7 @@
 
     <modules>
         <module>lkp-transactions-common</module>
+        <module>lkp-transactions-callee-ejb</module>
         <module>lkp-transactions-callee-web</module>
         <module>lkp-transactions-callee-ear</module>
         <module>lkp-transactions-client</module>
