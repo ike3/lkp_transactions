@@ -1,0 +1,47 @@
+#
+# Editors / debuggers / other output files
+#
+*~
+*.bak
+*.orig
+*.patch
+callgrind.out.*
+
+#
+# Git stuff
+#
+# stgit directories
+patches-*
+
+#
+# Maven/Java
+#
+target
+bin
+*.class
+test-output
+
+#
+# Eclipse, Idea
+#
+.project
+.tern-project
+.classpath
+.settings
+.externalToolBuilders
+.springBeans
+META-INF/MANIFEST.MF
+MANIFEST.MF
+setenv.bat
+*.iml
+/.idea
+**/target/
+*.ipr
+*.iws
+**node/
+.vscode
+
+#
+# Specific to ERUZ
+#
+esia-selfsigned.p12

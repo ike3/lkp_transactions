@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>lkp-transactions</artifactId>
+        <groupId>ru.lanit.lkp</groupId>
+        <version>9.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lkp-transactions-callee-web</artifactId>
+    <packaging>war</packaging>
+
+    <properties>
+        <servlet-api.version>3.0.1</servlet-api.version>
+        <jsp-api.version>2.0</jsp-api.version>
+        <ppa.mode>consul</ppa.mode>
+        <nsi.mode>consul</nsi.mode>
+        <egrul.mode>consul</egrul.mode>
+        <config.mode>consul</config.mode>
+        <client.build.mode>dev</client.build.mode>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>lkp-transactions-common</artifactId>
+            <version>9.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Это нужно для jax-ws т.к. из Java11 они все убраны  -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSP/Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp-api.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+
+
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.lanit.jboss</groupId>
+            <artifactId>jboss-config-object</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>lkp-transactions-callee</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+    </profiles>
+</project>
