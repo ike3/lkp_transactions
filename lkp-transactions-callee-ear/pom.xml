@@ -37,13 +37,8 @@
             <plugin>
                 <artifactId>maven-ear-plugin</artifactId>
                 <configuration>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
-                        <jarModule>
-                            <groupId>ru.lanit.lkp</groupId>
-                            <artifactId>lkp-transactions-common</artifactId>
-                            <bundleFileName>lkp-transactions-common.jar</bundleFileName>
-                            <moduleId>lkp-transactions-common</moduleId>
-                        </jarModule>
                         <ejbModule>
                             <groupId>ru.lanit.lkp</groupId>
                             <artifactId>lkp-transactions-callee-ejb</artifactId>
