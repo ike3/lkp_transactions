@@ -9,6 +9,10 @@
         <version>9.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <client.mode>direct</client.mode>
+    </properties>
+
     <artifactId>lkp-transactions-caller-ejb</artifactId>
 
     <packaging>ejb</packaging>
@@ -17,6 +21,12 @@
         <dependency>
             <groupId>ru.lanit.lkp</groupId>
             <artifactId>lkp-transactions-common</artifactId>
+            <version>9.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>lkp-transactions-client-${client.mode}</artifactId>
             <version>9.0.0-SNAPSHOT</version>
         </dependency>
 
