@@ -2,12 +2,12 @@ package ru.lanit.lkp.transactions;
 
 import java.util.Arrays;
 
-import javax.ejb.Local;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import javax.inject.Inject;
 
 @Stateless
 @Local
+@TransactionAttribute
 public class CallerBeanImpl implements CallerBean {
 
     @Inject

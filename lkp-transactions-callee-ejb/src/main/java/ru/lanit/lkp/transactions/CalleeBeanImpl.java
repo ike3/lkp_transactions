@@ -2,12 +2,12 @@ package ru.lanit.lkp.transactions;
 
 import java.util.Arrays;
 
-import javax.ejb.Local;
-import javax.ejb.Stateless;
+import javax.ejb.*;
 import javax.inject.Inject;
 
 @Stateless
 @Local
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class CalleeBeanImpl implements CalleeBean {
 
     @Inject

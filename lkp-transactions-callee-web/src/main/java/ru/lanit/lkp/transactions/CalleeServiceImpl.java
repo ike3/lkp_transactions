@@ -1,14 +1,14 @@
 package ru.lanit.lkp.transactions;
 
-import javax.ejb.EJB;
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+import javax.ejb.*;
+import javax.jws.*;
 
 @WebService(name = "CalleeService",
         serviceName = "CalleeService",
         endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@Remote(CalleeService.class)
 public class CalleeServiceImpl implements CalleeService {
 
     @EJB
