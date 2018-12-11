@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * http://localhost:8080/caller/call?name=caller_error
+ */
 @WebServlet(urlPatterns = "/call")
 public class CallerServlet extends HttpServlet {
 
@@ -23,8 +26,6 @@ public class CallerServlet extends HttpServlet {
         if (StringUtils.isEmpty(name)) {
             name = "(empty)";
         }
-
-        String error = req.getParameter("error");
 
         String result = bean.doSomething(name);
 
