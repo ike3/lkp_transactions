@@ -1,0 +1,35 @@
+package ru.lanit.lkp.transactions;
+
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns = "/call")
+public class CallerServlet extends HttpServlet {
+
+    @Inject
+    private CallerBean bean;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        if (StringUtils.isEmpty(name)) {
+            name = "(empty)";
+        }
+
+        String error = req.getParameter("error");
+
+        String result = bean.doSomething(name);
+
+        req.setAttribute("result", result);
+        req.getRequestDispatcher("WEB-INF/jsp/call.jsp").forward(req, resp);
+    }
+
+}

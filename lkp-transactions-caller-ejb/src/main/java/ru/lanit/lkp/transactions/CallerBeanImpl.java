@@ -6,14 +6,14 @@ import javax.inject.Inject;
 
 @Stateless
 @Local
-public class CalleeBeanImpl implements CalleeBean {
+public class CallerBeanImpl implements CallerBean {
 
     @Inject
     private SomeDao dao;
 
     @Override
     public String doSomething(String parameter) {
-        dao.logJournal("Callee is doing something with " + parameter);
+        dao.logJournal("Caller is doing something with " + parameter);
         return "done with " + parameter;
     }
 

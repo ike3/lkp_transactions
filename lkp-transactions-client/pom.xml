@@ -10,7 +10,7 @@
         <version>9.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>lkp-transactions-client</artifactId>
+    <artifactId>lkp-transactions-client-direct</artifactId>
 
     <packaging>jar</packaging>
 
