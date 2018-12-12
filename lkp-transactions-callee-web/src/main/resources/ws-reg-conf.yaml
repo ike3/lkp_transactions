@@ -1,0 +1,21 @@
+# This configuration file is used by wf-consul-web-registrar
+
+---
+
+  webServiceRegistrationConfigurations:
+
+    - name: CalleeService
+
+      tags:
+
+        - internal
+
+        - ws
+
+        - soap
+
+      meta:
+
+        path: /CalleeService
+
+      httpHealthCheckPath: /CalleeService?wsdl

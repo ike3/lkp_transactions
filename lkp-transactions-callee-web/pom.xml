@@ -16,11 +16,15 @@
     <properties>
         <servlet-api.version>3.0.1</servlet-api.version>
         <jsp-api.version>2.0</jsp-api.version>
-        <ppa.mode>consul</ppa.mode>
-        <nsi.mode>consul</nsi.mode>
-        <egrul.mode>consul</egrul.mode>
-        <config.mode>consul</config.mode>
-        <client.build.mode>dev</client.build.mode>
+
+        <javaee.api.version>8.0</javaee.api.version>
+        <slf4j.api.version>1.7.22</slf4j.api.version>
+        <consul.api.version>1.4.1</consul.api.version>
+        <javax.json.bind.api.version>1.0</javax.json.bind.api.version>
+        <jackson.databind.version>2.9.7</jackson.databind.version>
+        <jackson.dataformat.yaml>2.9.7</jackson.dataformat.yaml>
+        <commons.lang3.version>3.8.1</commons.lang3.version>
+        <commons.io.version>2.4</commons.io.version>
     </properties>
 
     <dependencies>
@@ -36,6 +40,64 @@
             <version>9.0.0-SNAPSHOT</version>
             <type>ejb</type>
             <classifier>client</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.lanit.lkp</groupId>
+            <artifactId>wf-consul-web-registrar</artifactId>
+            <version>(,9.1.0)</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>javax.json.bind</groupId>
+            <artifactId>javax.json.bind-api</artifactId>
+            <version>${javax.json.bind.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ecwid.consul</groupId>
+            <artifactId>consul-api</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson.dataformat.yaml}</version>
         </dependency>
 
         <!-- Это нужно для jax-ws т.к. из Java11 они все убраны  -->

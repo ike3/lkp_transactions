@@ -8,13 +8,36 @@ import javax.enterprise.inject.Produces;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
+/**
+
+http {
+
+    upstream CalleeService_cluster {
+        server localhost:8080;
+        server localhost:8081;
+    }
+
+    server {
+
+        location /callee/CalleeService {
+            proxy_pass http://CalleeService_cluster;
+            proxy_cache off;
+        }
+    }
+
+
+    http://localhost:8080/caller/call?name=caller_error
+
+}
+
+ */
 @ApplicationScoped
 public class CalleeClient {
     @Produces
     public CalleeService getService() {
         URL url = null;
         try {
-            url = new URL("http://localhost:8080/callee/CalleeService?wsdl");
+            url = new URL("http://localhost:80/callee/CalleeService?wsdl");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
