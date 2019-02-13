@@ -1,38 +1,52 @@
 version: '3'
 
 services:
+  coordinator:
+   build: ./coordinator
+   image: lkp_transactions_coordinator
+   hostname: coordinator
+   ports:
+     - "10080:8080"
+     - "10990:9990"
+   networks:
+     - mynetwork
+
   callee_master:
-   build: .
+   build: ./callee
    image: lkp_transactions_callee
    hostname: callee_master
    ports:
-     - "8081:8080"
-     - "9991:9990"
+     - "10081:8080"
+     - "10991:9990"
 #     - "8787:8787/tcp"
+   depends_on:
+      - coordinator
    volumes:
      - ./callee/deployments_master:/opt/jboss/wildfly/standalone/deployments:rw
    networks:
      - mynetwork
 
   callee_slave:
-   build: .
+   build: ./callee
    image: lkp_transactions_callee
    hostname: callee_slave
    ports:
-     - "8082:8080"
-     - "9992:9990"
+     - "10082:8080"
+     - "10992:9990"
 #     - "8787:8787/tcp"
+   depends_on:
+      - coordinator
    volumes:
      - ./callee/deployments_slave:/opt/jboss/wildfly/standalone/deployments:rw
    networks:
      - mynetwork
 
   callee:
-   build: .
+   build: ./nginx
    image: lkp_transactions_nginx
    hostname: callee
    ports:
-     - "8083:8080"
+     - "10083:8080"
    depends_on:
       - callee_master
       - callee_slave
@@ -40,16 +54,17 @@ services:
      - mynetwork
 
   caller:
-   build: .
+   build: ./caller
    image: lkp_transactions_caller
    hostname: caller
    ports:
-     - "8084:8080"
-     - "9994:9990"
+     - "10084:8080"
+     - "10994:9990"
 #     - "8787:8787/tcp"
    volumes:
      - ./caller/deployments:/opt/jboss/wildfly/standalone/deployments:rw
    depends_on:
+      - coordinator
       - callee
    networks:
      - mynetwork
