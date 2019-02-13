@@ -1,16 +1,37 @@
 version: '3'
 
 services:
-  coordinator:
+   #
+   # WildFly координатора транзакций
+   #
+  coordinator_backend:
    build: ./coordinator
    image: lkp_transactions_coordinator
+   hostname: coordinator_backend
+   ports:
+     - "11080:8080"
+     - "11990:9990"
+   networks:
+     - mynetwork
+
+   #
+   # Прокся для координатора - она логирует все обращения к нему (в проде не нужна)
+   #
+  coordinator:
+   build: ./logproxy
+   image: lkp_transactions_logproxy
    hostname: coordinator
    ports:
      - "10080:8080"
      - "10990:9990"
    networks:
      - mynetwork
+   depends_on:
+      - coordinator_backend
 
+   #
+   # Вызываемый сервер 1
+   #
   callee_master:
    build: ./callee
    image: lkp_transactions_callee
@@ -26,6 +47,9 @@ services:
    networks:
      - mynetwork
 
+   #
+   # Вызываемый сервер 2
+   #
   callee_slave:
    build: ./callee
    image: lkp_transactions_callee
@@ -41,6 +65,9 @@ services:
    networks:
      - mynetwork
 
+   #
+   # Балансировщик нагрузки
+   #
   callee:
    build: ./nginx
    image: lkp_transactions_nginx
@@ -53,6 +80,9 @@ services:
    networks:
      - mynetwork
 
+   #
+   # Вызывающий сервер
+   #
   caller:
    build: ./caller
    image: lkp_transactions_caller
