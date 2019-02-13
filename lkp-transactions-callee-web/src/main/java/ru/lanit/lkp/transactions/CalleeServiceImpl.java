@@ -7,12 +7,12 @@ import javax.jws.*;
         serviceName = "CalleeService",
         endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
-@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Remote(CalleeService.class)
 public class CalleeServiceImpl implements CalleeService {
 
     @EJB
-    CalleeBean bean;
+    Callee bean;
 
     @Override
     @WebMethod

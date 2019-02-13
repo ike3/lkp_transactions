@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CallerServlet extends HttpServlet {
 
     @Inject
-    private CallerBean bean;
+    private Caller bean;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

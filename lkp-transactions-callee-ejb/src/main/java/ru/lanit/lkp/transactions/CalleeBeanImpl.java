@@ -8,7 +8,7 @@ import javax.inject.Inject;
 @Stateless
 @Local
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
-public class CalleeBeanImpl implements CalleeBean {
+public class CalleeBeanImpl implements Callee {
 
     @Inject
     private SomeDao dao;

@@ -45,3 +45,8 @@ setenv.bat
 # Specific to ERUZ
 #
 esia-selfsigned.p12
+
+#
+# Docker
+#
+docker/*/deployments*

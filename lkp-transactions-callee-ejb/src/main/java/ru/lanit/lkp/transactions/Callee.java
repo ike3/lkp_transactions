@@ -1,5 +1,5 @@
 package ru.lanit.lkp.transactions;
 
-public interface CallerBean {
+public interface Callee {
     String doSomething(String parameter);
 }

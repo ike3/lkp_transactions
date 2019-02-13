@@ -1,0 +1,13 @@
+                <datasource jndi-name="java:/jdbc/ZakupkiDevDS" pool-name="OracleDS" enabled="true">
+                    <connection-url>jdbc:oracle:thin:@10.0.75.1:1521:PGZDB</connection-url>
+                    <driver>oracle</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                        <prefill>true</prefill>
+                    </pool>
+                    <security>
+                        <user-name>ZAKUPKI_DEV</user-name>
+                        <password>ZAKUPKI_DEV</password>
+                    </security>
+                </datasource>

@@ -1,0 +1,13 @@
+@rem Change Path to your JDK
+@echo off
+@set JAVA_HOME=C:\java\jdk11
+
+@set PATH=%JAVA_HOME%\bin;%PATH%
+@set MAVEN_OPTS=-XX:+UseParallelGC -Xmx1024m -XX:MaxPermSize=256m -Dhttps.protocols=TLSv1,SSLv3 -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+
+@rem Change path to your local maven repo
+@set M2_PATH=C:\m2
+
+@set WF_PATH=C:\Java\wf14
+
+@echo Env is set

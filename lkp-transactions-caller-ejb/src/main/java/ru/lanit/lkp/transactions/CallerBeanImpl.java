@@ -7,8 +7,8 @@ import javax.inject.Inject;
 
 @Stateless
 @Local
-@TransactionAttribute
-public class CallerBeanImpl implements CallerBean {
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+public class CallerBeanImpl implements Caller {
 
     @Inject
     private SomeDao dao;
