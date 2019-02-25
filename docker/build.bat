@@ -1,3 +1,5 @@
+docker build --tag=lkp_transactions_db db
+
 docker build --tag=lkp_transactions_caller caller
 docker build --tag=lkp_transactions_callee callee
 docker build --tag=lkp_transactions_coordinator coordinator

@@ -7,7 +7,7 @@ import javax.jws.*;
         serviceName = "CalleeService",
         endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
-@TransactionAttribute(TransactionAttributeType.REQUIRED)
+@TransactionAttribute(TransactionAttributeType.MANDATORY)
 @Remote(CalleeService.class)
 public class CalleeServiceImpl implements CalleeService {
 
