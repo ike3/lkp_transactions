@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+        xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+
+<!--
+
+<datasources>
+    <datasource jndi-name="java:/jdbc/ZakupkiDevDS" pool-name="OracleDS" enabled="true">
+     <connection-url>jdbc:oracle:thin:@localhost:1521:PGZDB</connection-url>
+      <driver>oracle</driver>
+      <pool>
+       <min-pool-size>1</min-pool-size>
+       <max-pool-size>5</max-pool-size>
+       <prefill>true</prefill>
+      </pool>
+      <security>
+       <user-name>ZAKUPKI_DEV</user-name>
+       <password>ZAKUPKI_DEV</password>
+      </security>
+    </datasource>
+    <drivers>
+        <driver name="oracle" module="com.oracle">
+            <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+        </driver>
+    </drivers>
+</datasources>
+
+-->
+    <persistence-unit name="zakupkiDevDs" transaction-type="JTA">
+        <jta-data-source>java:/jdbc/ZakupkiDevDS</jta-data-source>
+        <class>ru.lanit.lkp.transactions.OperationJournal</class>
+
+        <properties>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.default_schema" value="ZAKUPKI_DEV" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+        </properties>
+  </persistence-unit>
+</persistence>

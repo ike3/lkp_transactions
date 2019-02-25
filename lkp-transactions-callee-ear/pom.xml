@@ -24,11 +24,6 @@
             <version>9.0.0-SNAPSHOT</version>
             <type>ejb</type>
         </dependency>
-        <dependency>
-            <groupId>ru.lanit.lkp</groupId>
-            <artifactId>lkp-transactions-common</artifactId>
-            <version>9.0.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
 
 
