@@ -5,6 +5,7 @@ docker build --tag=lkp_transactions_nginx nginx
 
 docker build --tag=lkp_transactions_logproxy logproxy
 
+@echo off
 rem
 rem Просмотреть логи
 rem 
@@ -16,3 +17,5 @@ rem Просмотреть пакеты
 rem 
 rem docker exec -it docker_callee_1 cat /tmp/bodies/0000000001
 rem 
+
+pause

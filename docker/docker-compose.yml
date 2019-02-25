@@ -39,7 +39,7 @@ services:
    ports:
      - "10081:8080"
      - "10991:9990"
-#     - "8787:8787/tcp"
+     - "8788:8787/tcp"
    depends_on:
       - coordinator
    volumes:
@@ -57,7 +57,7 @@ services:
    ports:
      - "10082:8080"
      - "10992:9990"
-#     - "8787:8787/tcp"
+     - "8789:8787/tcp"
    depends_on:
       - coordinator
    volumes:
@@ -90,7 +90,7 @@ services:
    ports:
      - "10084:8080"
      - "10994:9990"
-#     - "8787:8787/tcp"
+     - "8787:8787/tcp"
    volumes:
      - ./caller/deployments:/opt/jboss/wildfly/standalone/deployments:rw
    depends_on:

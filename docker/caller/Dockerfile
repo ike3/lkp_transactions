@@ -3,7 +3,7 @@ FROM jboss/wildfly
 USER jboss
 RUN /opt/jboss/wildfly/bin/add-user.sh admin 123qweASD --silent
 
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"] #"--debug", "*:8787"
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "--debug", "*:8787"]
 
 EXPOSE 8080
 EXPOSE 9990
@@ -23,4 +23,6 @@ RUN sed -i '/<datasources>/r /opt/docker/dataSource.xml' /opt/jboss/wildfly/stan
 RUN sed -i '/<drivers>/r /opt/docker/driver.xml' /opt/jboss/wildfly/standalone/configuration/standalone.xml
 
 # External coordinator
-RUN sed -i 's/<xts-environment url="http:\/\/${jboss.bind.address:127.0.0.1}:8080\/ws-c11\/ActivationService"\/>/<xts-environment url="http:\/\/coordinator:8080\/ws-c11\/ActivationService"\/>/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml
+RUN sed -i 's/<xts-environment url="http:\/\/${jboss.bind.address:127.0.0.1}:8080\/ws-c11\/ActivationService"\/>/<xts-environment url="http:\/\/coordinator5:8080\/ws-c11\/ActivationService"\/>/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml
+
+RUN sed -i 's/<core-environment node-identifier="${jboss.tx.node.id:1}">/<core-environment node-identifier="12">/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml

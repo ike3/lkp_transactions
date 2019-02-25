@@ -14,3 +14,5 @@ RUN cp /opt/jboss/wildfly/docs/examples/configs/standalone-xts.xml /opt/jboss/wi
 
 # External coordinator
 RUN sed -i 's/<xts-environment url="http:\/\/${jboss.bind.address:127.0.0.1}:8080\/ws-c11\/ActivationService"\/>/<xts-environment url="http:\/\/coordinator:8080\/ws-c11\/ActivationService"\/>/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml
+
+RUN sed -i 's/<core-environment node-identifier="${jboss.tx.node.id:1}">/<core-environment node-identifier="13">/g' /opt/jboss/wildfly/standalone/configuration/standalone.xml
