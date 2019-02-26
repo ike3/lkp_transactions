@@ -1,3 +1,4 @@
+docker build --tag=wnameless/docker-oracle-xe-11g docker-oracle-xe-11g
 docker build --tag=lkp_transactions_db db
 
 docker build --tag=lkp_transactions_caller caller

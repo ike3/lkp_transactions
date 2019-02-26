@@ -42,7 +42,7 @@ services:
      - "8788:8787/tcp"
    depends_on:
       - coordinator
-      - db
+      - callee_db
    volumes:
      - ./callee/deployments_master:/opt/jboss/wildfly/standalone/deployments:rw
    networks:
@@ -61,9 +61,21 @@ services:
      - "8789:8787/tcp"
    depends_on:
       - coordinator
-      - db
+      - callee_db
    volumes:
      - ./callee/deployments_slave:/opt/jboss/wildfly/standalone/deployments:rw
+   networks:
+     - mynetwork
+
+   #
+   # Callee's Oracle
+   #
+  callee_db:
+   build: ./db
+   image: lkp_transactions_db
+   hostname: callee_db
+   ports:
+     - "11522:1521/tcp"
    networks:
      - mynetwork
 
@@ -98,17 +110,17 @@ services:
    depends_on:
       - coordinator
       - callee
-      - db
+      - caller_db
    networks:
      - mynetwork
 
    #
-   # Oracle
+   # Caller's Oracle
    #
-  db:
+  caller_db:
    build: ./db
    image: lkp_transactions_db
-   hostname: caller
+   hostname: caller_db
    ports:
      - "11521:1521/tcp"
    networks:
