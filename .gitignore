@@ -40,13 +40,10 @@ setenv.bat
 *.iws
 **node/
 .vscode
-
-#
-# Specific to ERUZ
-#
-esia-selfsigned.p12
+tmp
 
 #
 # Docker
 #
 docker/*/deployments*
+docker/logs/*
