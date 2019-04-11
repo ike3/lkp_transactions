@@ -5,6 +5,7 @@ import javax.jws.*;
 
 @WebService(name = "CallerService",
         serviceName = "CallerService",
+        wsdlLocation = "/wsdl/CallerService.wsdl",
         endpointInterface = "ru.lanit.lkp.transactions.CallerService",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
 @TransactionAttribute(TransactionAttributeType.MANDATORY)

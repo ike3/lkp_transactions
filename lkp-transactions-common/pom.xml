@@ -113,4 +113,86 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin-patched</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <wsdlDirectory>${project.basedir}/src/main/resources/wsdl</wsdlDirectory>
+                    <sourceDestDir>${project.basedir}/target/generated-sources/wsclient</sourceDestDir>
+                    <packageName>ru.lanit.lkp.transactions</packageName>
+                    <keep>true</keep>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>CalleeService</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>CalleeService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>/wsdl/CalleeService.wsdl</wsdlLocation>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <xjcArgs>
+                                <xjcArg>-Xsetters</xjcArg>
+                            </xjcArgs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>CallerService</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>CallerService.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>/wsdl/CallerService.wsdl</wsdlLocation>
+                            <vmArgs>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                            </vmArgs>
+                            <xjcArgs>
+                                <xjcArg>-Xsetters</xjcArg>
+                            </xjcArgs>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <!-- put xjc-plugins on the jaxws-maven-plugin's classpath -->
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics</artifactId>
+                        <version>0.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/target/generated-sources/wsclient</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
