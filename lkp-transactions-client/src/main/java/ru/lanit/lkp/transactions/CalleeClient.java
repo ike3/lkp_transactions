@@ -3,8 +3,6 @@ package ru.lanit.lkp.transactions;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
 import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
@@ -34,13 +32,11 @@ http {
 }
 
  */
-@ApplicationScoped
 public class CalleeClient {
-    @Produces
     public CalleeService getService() {
         URL url = null;
         try {
-            url = new URL("http://callee:8080/callee/CalleeService?wsdl");
+            url = new URL("http://localhost:9082/callee/CalleeService?wsdl");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -48,7 +44,7 @@ public class CalleeClient {
         Service service = Service.create(url, qname);
         CalleeService port = service.getPort(CalleeService.class);
 
-        String endpointURL = "http://callee:8080/callee/CalleeService";
+        String endpointURL = "http://localhost:9082/callee/CalleeService";
         BindingProvider bp = (BindingProvider)port;
         bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 

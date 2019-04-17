@@ -14,10 +14,9 @@
     <packaging>war</packaging>
 
     <properties>
-        <servlet-api.version>3.0.1</servlet-api.version>
+        <servlet-api.version>2.5</servlet-api.version>
         <jsp-api.version>2.0</jsp-api.version>
 
-        <javaee.api.version>8.0</javaee.api.version>
         <slf4j.api.version>1.7.22</slf4j.api.version>
         <consul.api.version>1.4.1</consul.api.version>
         <javax.json.bind.api.version>1.0</javax.json.bind.api.version>
@@ -48,15 +47,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
+          <groupId>javax.ejb</groupId>
+          <artifactId>ejb-api</artifactId>
+          <version>3.0</version>
+          <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.json.bind</groupId>
@@ -67,7 +61,6 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.ecwid.consul</groupId>
@@ -99,18 +92,10 @@
             <version>${jackson.dataformat.yaml}</version>
         </dependency>
 
-        <!-- Это нужно для jax-ws т.к. из Java11 они все убраны  -->
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-ri</artifactId>
-            <type>pom</type>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- JSP/Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <artifactId>servlet-api</artifactId>
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -127,37 +112,13 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.8.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ru.lanit.jboss</groupId>
-            <artifactId>jboss-config-object</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
         <finalName>lkp-transactions-callee</finalName>
         <plugins>
             <plugin>
+                <version>2.4</version>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>

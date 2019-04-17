@@ -1,16 +1,24 @@
 package ru.lanit.lkp.transactions;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
+
 import java.util.Arrays;
 
+import javax.annotation.Resource;
+import javax.annotation.Resources;
 import javax.ejb.*;
-import javax.inject.Inject;
+import javax.interceptor.Interceptors;
+import javax.sql.DataSource;
 
 @Stateless
 @Local
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
+@Interceptors(SpringBeanAutowiringInterceptor.class)
+@Resources({@Resource(name = "jdbc/ZakupkiDevDS", type = DataSource.class)})
 public class CalleeBeanImpl implements Callee {
 
-    @Inject
+    @Autowired
     private SomeDao dao;
 
     @Override

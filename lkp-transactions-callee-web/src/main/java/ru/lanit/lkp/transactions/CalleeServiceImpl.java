@@ -7,8 +7,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-@WebService(name = "CalleeService",
-        serviceName = "CalleeService",
+@WebService(serviceName = "CalleeService",
         wsdlLocation = "/wsdl/CalleeService.wsdl",
         endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
@@ -19,7 +18,6 @@ public class CalleeServiceImpl implements CalleeService {
     Callee bean;
 
     @Override
-    @WebMethod
     public String doSomething(@WebParam String parameter) {
         return bean.doSomething(parameter);
     }

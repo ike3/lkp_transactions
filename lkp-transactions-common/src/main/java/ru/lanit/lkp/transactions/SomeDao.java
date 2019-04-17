@@ -1,17 +1,22 @@
 package ru.lanit.lkp.transactions;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@ApplicationScoped
 public class SomeDao {
-    @PersistenceContext
-    private EntityManager em;
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void logJournal(String name) {
+        Session s = sessionFactory.getCurrentSession();
         OperationJournal o = new OperationJournal();
         o.setName(name);
-        em.persist(o);
+        s.saveOrUpdate(o);
+        s.flush();
     }
 }

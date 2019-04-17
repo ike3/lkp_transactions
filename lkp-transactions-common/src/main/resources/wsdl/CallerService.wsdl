@@ -1,56 +1,75 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CallerService" targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
-  <wsdl:types>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/" elementFormDefault="unqualified" targetNamespace="http://api.ws.transactions.lkp.lanit.ru/" version="1.0">
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsat11="http://docs.oasis-open.org/ws-tx/wsat/2006/06"
+    xmlns:wsat10="http://schemas.xmlsoap.org/ws/2004/10/wsat"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CallerService"
+    targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
 
-  <xs:element name="doSomething" type="tns:doSomething"/>
+    <wsp:Policy wsu:Id="ATPolicy">
+        <wsp:ExactlyOne>
+            <wsat11:ATAssertion />
+            <wsat10:ATAssertion />
+        </wsp:ExactlyOne>
+    </wsp:Policy>
 
-  <xs:element name="doSomethingResponse" type="tns:doSomethingResponse"/>
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/" elementFormDefault="unqualified"
+            targetNamespace="http://api.ws.transactions.lkp.lanit.ru/" version="1.0">
 
-  <xs:complexType name="doSomething">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
+            <xs:element name="doSomething" type="tns:doSomething" />
 
-  <xs:complexType name="doSomethingResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
+            <xs:element name="doSomethingResponse" type="tns:doSomethingResponse" />
 
-</xs:schema>
-  </wsdl:types>
-  <wsdl:message name="doSomethingResponse">
-    <wsdl:part element="tns:doSomethingResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="doSomething">
-    <wsdl:part element="tns:doSomething" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:portType name="CallerService">
-    <wsdl:operation name="doSomething">
-      <wsdl:input message="tns:doSomething" name="doSomething">
-    </wsdl:input>
-      <wsdl:output message="tns:doSomethingResponse" name="doSomethingResponse">
-    </wsdl:output>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="CallerServiceSoapBinding" type="tns:CallerService">
-    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="doSomething">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="doSomething">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="doSomethingResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="CallerService">
-    <wsdl:port binding="tns:CallerServiceSoapBinding" name="CallerServiceImplPort">
-      <soap:address location="http://172.18.0.9:8080/caller/CallerService"/>
-    </wsdl:port>
-  </wsdl:service>
+            <xs:complexType name="doSomething">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="arg0" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="doSomethingResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="doSomethingResponse">
+        <wsdl:part element="tns:doSomethingResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="doSomething">
+        <wsdl:part element="tns:doSomething" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CallerService">
+        <wsdl:operation name="doSomething">
+            <wsdl:input message="tns:doSomething" name="doSomething">
+            </wsdl:input>
+            <wsdl:output message="tns:doSomethingResponse" name="doSomethingResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CallerServiceSoapBinding" type="tns:CallerService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="doSomething">
+            <wsp:PolicyReference URI="#ATPolicy" wsdl:required="true" />
+            <soap:operation soapAction="" style="document" />
+            <wsdl:input name="doSomething">
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output name="doSomethingResponse">
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CallerService">
+        <wsdl:port binding="tns:CallerServiceSoapBinding" name="CallerServiceImplPort">
+            <soap:address location="http://172.18.0.9:8080/caller/CallerService" />
+        </wsdl:port>
+    </wsdl:service>
 </wsdl:definitions>
