@@ -16,8 +16,6 @@ import javax.transaction.UserTransaction;
  */
 public class CallerServlet extends HttpServlet {
 
-    private CallerService caller = new CallerClient().getService();
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
@@ -25,6 +23,7 @@ public class CallerServlet extends HttpServlet {
             name = "(empty)";
         }
 
+        CallerService caller = new CallerClient().getService();
         String result;
 //        try {
 //            InitialContext initCtx = new InitialContext();

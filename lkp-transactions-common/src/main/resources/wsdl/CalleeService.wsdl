@@ -7,6 +7,7 @@
     xmlns:wsat10="http://schemas.xmlsoap.org/ws/2004/10/wsat"
     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CalleeService"
     targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
+
     <wsp:Policy wsu:Id="ATPolicy">
         <wsp:ExactlyOne>
             <wsat11:ATAssertion />
@@ -56,7 +57,7 @@
     <wsdl:binding name="CalleeServiceSoapBinding" type="tns:CalleeService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="doSomething">
-            <wsp:PolicyReference URI="#ATPolicy" wsdl:required="true" />
+            <wsp:PolicyReference URI="#ATPolicy" />
             <soap:operation soapAction="" style="document" />
             <wsdl:input name="doSomething">
                 <soap:body use="literal" />
@@ -68,7 +69,7 @@
     </wsdl:binding>
     <wsdl:service name="CalleeService">
         <wsdl:port binding="tns:CalleeServiceSoapBinding" name="CalleeServiceImplPort">
-            <soap:address location="http://172.18.0.7:8080/callee/CalleeService" />
+            <soap:address location="http://localhost:9082/callee/CalleeService" />
         </wsdl:port>
     </wsdl:service>
 </wsdl:definitions>

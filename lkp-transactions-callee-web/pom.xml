@@ -41,12 +41,6 @@
         </dependency>
 
         <dependency>
-            <groupId>ru.lanit.lkp</groupId>
-            <artifactId>wf-consul-web-registrar</artifactId>
-            <version>(,9.1.0)</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
           <groupId>javax.ejb</groupId>
           <artifactId>ejb-api</artifactId>
           <version>3.0</version>

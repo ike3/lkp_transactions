@@ -24,12 +24,11 @@ public class CallerBeanImpl implements Caller {
     @Autowired
     private SomeDao dao;
 
-    private CalleeService callee = new CalleeClient().getService();
-
     @Override
     public String doSomething(String parameter) {
         dao.logJournal("Caller is doing something with " + parameter);
 
+        CalleeService callee = new CalleeClient().getService();
         callee.doSomething(parameter);
 
         if (Arrays.asList("error", "caller_error").contains(parameter)) {
