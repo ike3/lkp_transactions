@@ -10,7 +10,7 @@
 @set WAS_ROOT=C:\Program Files\IBM\WebSphere\AppServer\profiles\AppSrv01
 @set ADMIN=-host localhost -port 8880 -lang jython -username admin -password admin
 
-@if exist "setenv.bat" ( call setenv.bat )
+@if exist "setenv_was.bat" ( call setenv_was.bat )
 
 @set CMD_OPTIONS=-verbose -node %SERVERNODE% -cell %SERVERCELL% -server %SERVERNAME% -usedefaultbindings -update 
 @set APP_MANAGER=AdminControl.queryNames('type=ApplicationManager,node=%SERVERNODE%,process=%SERVERNAME%,*')

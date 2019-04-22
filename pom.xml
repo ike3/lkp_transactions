@@ -57,35 +57,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- Консул -->
-            <dependency>
-                <groupId>ru.lanit.lkp</groupId>
-                <artifactId>consul-based-ws-client</artifactId>
-                <version>9.0.0.5</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ecwid.consul</groupId>
-                <artifactId>consul-api</artifactId>
-                <version>${consul.api.version}</version>
-            </dependency>
-
             <!-- Разное -->
-            <dependency>
-                <groupId>com.sun.xml.ws</groupId>
-                <artifactId>jaxws-ri</artifactId>
-                <version>${jaxws.version}</version>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>javax</groupId>
-                <artifactId>javaee-api</artifactId>
-                <version>8.0</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.enterprise</groupId>
-                <artifactId>cdi-api</artifactId>
-                <version>2.0</version>
-            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>

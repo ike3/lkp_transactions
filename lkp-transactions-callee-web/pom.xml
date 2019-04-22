@@ -18,8 +18,6 @@
         <jsp-api.version>2.0</jsp-api.version>
 
         <slf4j.api.version>1.7.22</slf4j.api.version>
-        <consul.api.version>1.4.1</consul.api.version>
-        <javax.json.bind.api.version>1.0</javax.json.bind.api.version>
         <jackson.databind.version>2.9.7</jackson.databind.version>
         <jackson.dataformat.yaml>2.9.7</jackson.dataformat.yaml>
         <commons.lang3.version>3.8.1</commons.lang3.version>
@@ -47,24 +45,8 @@
           <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>${javax.json.bind.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ecwid.consul</groupId>
-            <artifactId>consul-api</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

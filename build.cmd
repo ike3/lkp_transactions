@@ -1,5 +1,5 @@
 @echo off
-if exist "%FCS_HOME%\setenv.bat" ( call %FCS_HOME%\setenv.bat )
+if exist "setenv_was.bat" ( call setenv_was.bat )
 
 set params=package ^
     -Planit-repositories ^
