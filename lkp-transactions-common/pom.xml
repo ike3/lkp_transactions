@@ -138,6 +138,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
@@ -176,6 +183,7 @@
 
     <build>
         <plugins>
+            <!--
             <plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -226,7 +234,6 @@
                     </execution>
                 </executions>
                 <dependencies>
-                    <!-- put xjc-plugins on the jaxws-maven-plugin's classpath -->
                     <dependency>
                         <groupId>org.jvnet.jaxb2_commons</groupId>
                         <artifactId>jaxb2-basics</artifactId>
@@ -239,6 +246,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -252,7 +260,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/target/generated-sources/wsclient</source>
+                                <source>${project.basedir}/src/generated-sources/wsclient</source>
                             </sources>
                         </configuration>
                     </execution>

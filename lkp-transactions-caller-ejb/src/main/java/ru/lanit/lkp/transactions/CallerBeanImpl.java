@@ -14,7 +14,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import javax.transaction.*;
 
-@Stateless
+@Stateless(name = "CallerBeanImpl")
 @Local
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Interceptors(SpringBeanAutowiringInterceptor.class)

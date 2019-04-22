@@ -4,14 +4,12 @@
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
     xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
     xmlns:wsat11="http://docs.oasis-open.org/ws-tx/wsat/2006/06"
-    xmlns:wsat10="http://schemas.xmlsoap.org/ws/2004/10/wsat"
     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CallerService"
     targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
 
     <wsp:Policy wsu:Id="ATPolicy">
         <wsp:ExactlyOne>
             <wsat11:ATAssertion />
-            <wsat10:ATAssertion />
         </wsp:ExactlyOne>
     </wsp:Policy>
 
@@ -57,7 +55,7 @@
     <wsdl:binding name="CallerServiceSoapBinding" type="tns:CallerService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="doSomething">
-            <wsp:PolicyReference URI="#ATPolicy" />
+            <wsp:PolicyReference URI="#ATPolicy" wsdl:required="true" />
             <soap:operation soapAction="" style="document" />
             <wsdl:input name="doSomething">
                 <soap:body use="literal" />
