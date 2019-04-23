@@ -3,9 +3,10 @@ package ru.lanit.lkp.transactions;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Service;
+
+import ru.lanit.lkp.transactions.ws.api.CallerService;
+import ru.lanit.lkp.transactions.ws.api.CallerService_Service;
 
 public class CallerClient {
     public CallerService getService() {

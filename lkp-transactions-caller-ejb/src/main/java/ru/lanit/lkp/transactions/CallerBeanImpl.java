@@ -1,22 +1,22 @@
 package ru.lanit.lkp.transactions;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
-
 import java.util.Arrays;
 
 import javax.annotation.Resource;
 import javax.annotation.Resources;
-import javax.ejb.*;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.interceptor.Interceptors;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
-import javax.transaction.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
+
+import ru.lanit.lkp.transactions.ws.api.CalleeService;
 
 @Stateless(name = "CallerBeanImpl")
-@Local
-@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @Resources({@Resource(name = "jdbc/ZakupkiDevDS", type = DataSource.class)})
 public class CallerBeanImpl implements Caller {

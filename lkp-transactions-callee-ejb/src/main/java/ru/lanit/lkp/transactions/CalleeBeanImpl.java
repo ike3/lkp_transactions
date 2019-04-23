@@ -11,8 +11,7 @@ import javax.ejb.*;
 import javax.interceptor.Interceptors;
 import javax.sql.DataSource;
 
-@Stateless
-@Local
+@Stateless(name = "CalleeBeanImpl")
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @Resources({@Resource(name = "jdbc/ZakupkiDevDS", type = DataSource.class)})

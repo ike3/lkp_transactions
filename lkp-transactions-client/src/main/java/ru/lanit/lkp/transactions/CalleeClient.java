@@ -7,6 +7,8 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.Service;
 
+import ru.lanit.lkp.transactions.ws.api.CalleeService;
+
 /**
 
 http {
@@ -36,19 +38,19 @@ public class CalleeClient {
     public CalleeService getService() {
         URL url = null;
         try {
-            url = new URL("http://localhost:9082/callee/CalleeService/wsdl/CalleeService.wsdl");
+            url = new URL("http://localhost:10080/callee/CalleeService/wsdl/CalleeService.wsdl");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        CalleeService_Service serv = new CalleeService_Service();
-        CalleeService port = serv.getCalleeServiceImplPort();
-//        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CalleeService");
-//        Service service = Service.create(url, qname);
-//        CalleeService port = service.getPort(CalleeService.class);
+        //CalleeService_Service serv = new CalleeService_Service();
+        //CalleeService port = serv.getCalleeServiceImplPort();
+        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CalleeService");
+        Service service = Service.create(url, qname);
+        CalleeService port = service.getPort(CalleeService.class);
 
-        String endpointURL = "http://localhost:9082/callee/CalleeService";
+        String endpointURL = "http://localhost:10080/callee/CalleeService";
         BindingProvider bp = (BindingProvider)port;
-        //bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
         return port;
     }
