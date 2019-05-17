@@ -12,4 +12,12 @@
         <url-pattern>/caller</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ru.lanit.lkp.transactions.CallerBeanImpl</servlet-name>
+        <servlet-class>com.ibm.ws.websvcs.transport.http.WASAxis2Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ru.lanit.lkp.transactions.CallerBeanImpl</servlet-name>
+        <url-pattern>/CallerService2</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -7,10 +7,10 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
-@WebService(serviceName = "CalleeService",
-        wsdlLocation = "/wsdl/CalleeService.wsdl",
-        endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
-        targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
+//@WebService(serviceName = "CalleeService",
+//        wsdlLocation = "/wsdl/CalleeService.wsdl",
+//        endpointInterface = "ru.lanit.lkp.transactions.CalleeService",
+//        targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 public class CalleeServiceImpl implements CalleeService {
 

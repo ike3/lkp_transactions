@@ -1,75 +1,50 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/"
-    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
-    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
-    xmlns:wsat11="http://docs.oasis-open.org/ws-tx/wsat/2006/06"
-    xmlns:wsat10="http://schemas.xmlsoap.org/ws/2004/10/wsat"
-    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CalleeService"
-    targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
-
-    <wsp:Policy wsu:Id="ATPolicy">
-        <wsp:ExactlyOne>
-            <wsat11:ATAssertion />
-            <wsat10:ATAssertion />
-        </wsp:ExactlyOne>
-    </wsp:Policy>
-
-    <wsdl:types>
-        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/" elementFormDefault="unqualified"
-            targetNamespace="http://api.ws.transactions.lkp.lanit.ru/" version="1.0">
-
-            <xs:element name="doSomething" type="tns:doSomething" />
-
-            <xs:element name="doSomethingResponse" type="tns:doSomethingResponse" />
-
-            <xs:complexType name="doSomething">
-                <xs:sequence>
-                    <xs:element minOccurs="0" name="arg0" type="xs:string" />
-                </xs:sequence>
-            </xs:complexType>
-
-            <xs:complexType name="doSomethingResponse">
-                <xs:sequence>
-                    <xs:element minOccurs="0" name="return" type="xs:string" />
-                </xs:sequence>
-            </xs:complexType>
-
-        </xs:schema>
-    </wsdl:types>
-    <wsdl:message name="doSomethingResponse">
-        <wsdl:part element="tns:doSomethingResponse" name="parameters">
-        </wsdl:part>
-    </wsdl:message>
-    <wsdl:message name="doSomething">
-        <wsdl:part element="tns:doSomething" name="parameters">
-        </wsdl:part>
-    </wsdl:message>
-    <wsdl:portType name="CalleeService">
-        <wsdl:operation name="doSomething">
-            <wsdl:input message="tns:doSomething" name="doSomething">
-            </wsdl:input>
-            <wsdl:output message="tns:doSomethingResponse" name="doSomethingResponse">
-            </wsdl:output>
-        </wsdl:operation>
-    </wsdl:portType>
-    <wsdl:binding name="CalleeServiceSoapBinding" type="tns:CalleeService">
-        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-        <wsdl:operation name="doSomething">
-            <wsp:PolicyReference URI="#ATPolicy" />
-            <soap:operation soapAction="" style="document" />
-            <wsdl:input name="doSomething">
-                <soap:body use="literal" />
-            </wsdl:input>
-            <wsdl:output name="doSomethingResponse">
-                <soap:body use="literal" />
-            </wsdl:output>
-        </wsdl:operation>
-    </wsdl:binding>
-    <wsdl:service name="CalleeService">
-        <wsdl:port binding="tns:CalleeServiceSoapBinding" name="CalleeServiceImplPort">
-            <soap:address location="http://localhost:9082/callee/CalleeService" />
-        </wsdl:port>
-    </wsdl:service>
-</wsdl:definitions>
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CalleeService2"
+             targetNamespace="http://api.ws.transactions.lkp.lanit.ru/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy"
+             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://api.ws.transactions.lkp.lanit.ru/" schemaLocation="CalleeService2_schema1.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="doSomethingResponse">
+        <part name="parameters" element="tns:doSomethingResponse">
+        </part>
+    </message>
+    <message name="doSomething">
+        <part name="parameters" element="tns:doSomething">
+        </part>
+    </message>
+    <portType name="CalleeService">
+        <operation name="doSomething">
+            <input message="tns:doSomething">
+            </input>
+            <output message="tns:doSomethingResponse">
+            </output>
+        </operation>
+    </portType>
+    <binding name="CalleeBeanImplPortBinding" type="tns:CalleeService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="doSomething">
+            <soap:operation soapAction=""/>
+            <wsp:PolicyReference URI="#278ad583-8800-4b3d-80a7-511cd6abddd5"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CalleeService2">
+        <port name="CalleeBeanImplPort" binding="tns:CalleeBeanImplPortBinding">
+            <soap:address location="http://localhost:9082/callee/CalleeService2"/>
+        </port>
+    </service>
+    <wsp:Policy wsu:Id="278ad583-8800-4b3d-80a7-511cd6abddd5"><wsp:ExactlyOne><wsp:All><wspns0:ATAssertion xmlns:wspns0="http://schemas.xmlsoap.org/ws/2004/10/wsat"/></wsp:All><wsp:All><ns2:ATAssertion xmlns:ns2="http://docs.oasis-open.org/ws-tx/wsat/2006/06"/></wsp:All></wsp:ExactlyOne></wsp:Policy>
+</definitions>

@@ -11,19 +11,19 @@ public class CallerClient {
     public CallerService getService() {
         URL url = null;
         try {
-            url = new URL("http://localhost:9082/caller/CallerService/wsdl/CallerService.wsdl");
+            url = new URL("http://localhost:9082/caller/CallerService2/CallerService2.wsdl");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        CallerService_Service serv = new CallerService_Service();
-        CallerService port = serv.getCallerServiceImplPort();
-//        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CallerService");
-//        Service service = Service.create(url, qname);
-//        CallerService port = service.getPort(CallerService.class);
+//        CallerService_Service serv = new CallerService_Service();
+//        CallerService port = serv.getCallerServiceImplPort();
+        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CallerService2");
+        Service service = Service.create(url, qname);
+        CallerService port = service.getPort(CallerService.class);
 
-        String endpointURL = "http://localhost:9082/caller/CallerService";
+        String endpointURL = "http://localhost:9082/caller/CallerService2";
         BindingProvider bp = (BindingProvider)port;
-        //bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
         return port;
     }

@@ -80,7 +80,7 @@
     </dependencies>
 
      <build>
-        <finalName>lkp-transactions-callee</finalName>
+        <finalName>lkp-transactions-caller</finalName>
         <plugins>
             <plugin>
                 <version>2.4</version>

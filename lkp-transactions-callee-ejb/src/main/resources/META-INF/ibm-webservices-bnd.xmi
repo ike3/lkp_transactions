@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wsbnd:WSBinding
+    xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:com.ibm.etools.webservice.wsbnd="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wsbnd.xmi">
+    <routerModules transport="http" name="lkp-transactions-callee.war" />
+</com.ibm.etools.webservice.wsbnd:WSBinding>

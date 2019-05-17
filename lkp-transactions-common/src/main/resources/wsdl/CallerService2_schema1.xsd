@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/" version="1.0" targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
+
+    <xs:element name="doSomething" type="tns:doSomething"></xs:element>
+
+    <xs:element name="doSomethingResponse" type="tns:doSomethingResponse"></xs:element>
+
+    <xs:complexType name="doSomething">
+        <xs:sequence>
+            <xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="doSomethingResponse">
+        <xs:sequence>
+            <xs:element name="return" type="xs:string" minOccurs="0"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
