@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 @Stateless
 @Local
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.MANDATORY)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @WebService(serviceName = "CalleeService2",
@@ -27,8 +28,9 @@ public class CalleeBeanImpl implements CalleeService {
     private SomeDao dao;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.MANDATORY)
     public String doSomething(String parameter) {
-//        dao.logJournal("Callee is doing something with " + parameter);
+        dao.logJournal("Callee is doing something with " + parameter);
 
         if (Arrays.asList("error", "callee_error").contains(parameter)) {
             throw new RuntimeException("Error occured in callee");

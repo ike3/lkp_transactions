@@ -18,6 +18,7 @@ import javax.transaction.*;
 @Stateless
 @Local
 @Remote(CalleeService.class)
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @WebService(serviceName = "CallerService2",
@@ -31,8 +32,9 @@ public class CallerBeanImpl implements CallerService {
     private SomeDao dao;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public String doSomething(String parameter) {
-//        dao.logJournal("Caller is doing something with " + parameter);
+        dao.logJournal("Caller is doing something with " + parameter);
 
         CalleeService callee = new CalleeClient().getService();
         callee.doSomething(parameter);
