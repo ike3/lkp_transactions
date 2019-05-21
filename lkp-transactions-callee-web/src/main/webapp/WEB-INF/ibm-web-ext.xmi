@@ -9,12 +9,12 @@
  <webApp href="WEB-INF/web.xml#IBM_CALLEE"/>
 
  <extendedServlets>
-    <extendedServlet href="WEB-INF/web.xml#ru.lanit.lkp.transactions.CalleeBeanImpl"/>
+    <extendedServlet href="WEB-INF/web.xml#Callee"/>
     <globalTransaction sendWSAT="true"/>
     <webGlobalTransaction supportsWSAT="true"/>
  </extendedServlets>
- 
+
   <jspAttributes xmi:id="JSPAttribute_1260477325046" name="reloadEnabled" value="true"/>
   <jspAttributes xmi:id="JSPAttribute_1260477325047" name="reloadInterval" value="10"/>
-  
+
 </com.ibm.ejs.models.base.extensions.webappext:WebAppExtension>

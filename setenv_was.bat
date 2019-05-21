@@ -1,6 +1,6 @@
 @rem Change Path to your JDK
 @echo off
-@set JAVA_HOME=C:\java\was\8.5\java
+@set JAVA_HOME=C:\was7\java
 @set M2_HOME=C:\Java\apache-maven-3.2.5
 
 @set PATH=%JAVA_HOME%\bin;%PATH%
@@ -16,7 +16,7 @@
 @set USER=wasadmin
 @set PASSWORD=wasadmin
 
-@set WAS_ROOT=C:\java\was\8.5\profiles\fcs
+@set WAS_ROOT=C:\was7\profiles\fcs
 @set ADMIN=-conntype RMI -host localhost -port 2811 -lang jython -username %USER% -password %PASSWORD% -javaoption "-Xms1024m" -javaoption "-Xmx2048m"
 
 @echo Env is set

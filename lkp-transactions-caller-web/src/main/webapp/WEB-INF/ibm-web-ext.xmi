@@ -9,12 +9,12 @@
  <webApp href="WEB-INF/web.xml#IBM_CALLER"/>
 
  <extendedServlets>
-    <extendedServlet href="WEB-INF/web.xml#ru.lanit.lkp.transactions.CallerBeanImpl"/>
+    <extendedServlet href="WEB-INF/web.xml#Caller"/>
     <globalTransaction sendWSAT="true"/>
     <webGlobalTransaction supportsWSAT="true"/>
  </extendedServlets>
 
-  <jspAttributes xmi:id="JSPAttribute_1260477325046" name="reloadEnabled" value="true"/>
-  <jspAttributes xmi:id="JSPAttribute_1260477325047" name="reloadInterval" value="10"/>
+  <jspAttributes xmi:id="JSPAttribute_1260477325048" name="reloadEnabled" value="true"/>
+  <jspAttributes xmi:id="JSPAttribute_1260477325049" name="reloadInterval" value="10"/>
 
 </com.ibm.ejs.models.base.extensions.webappext:WebAppExtension>
