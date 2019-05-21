@@ -15,6 +15,7 @@ public class CallerServiceImpl implements CallerService {
     Caller bean;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public String doSomething(@WebParam String parameter) {
         return bean.doSomething(parameter);
     }

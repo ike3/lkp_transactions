@@ -2,14 +2,30 @@
 <wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://api.ws.transactions.lkp.lanit.ru/"
     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
-    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
     xmlns:wsat11="http://docs.oasis-open.org/ws-tx/wsat/2006/06"
     xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="CallerService"
     targetNamespace="http://api.ws.transactions.lkp.lanit.ru/">
 
-    <wsp:Policy wsu:Id="ATPolicy">
+    <wsp:Policy xmlns:wsp="http://www.w3.org/ns/ws-policy" wsu:Id="5093fdc2-0adc-4db7-839a-ac707aea7928">
         <wsp:ExactlyOne>
-            <wsat11:ATAssertion />
+            <wsp:All>
+                <wspns0:ATAssertion xmlns:wspns0="http://schemas.xmlsoap.org/ws/2004/10/wsat"
+                    wsp:Optional="true" />
+            </wsp:All>
+            <wsp:All>
+                <ns2:ATAssertion xmlns:ns2="http://docs.oasis-open.org/ws-tx/wsat/2006/06"
+                    wsp:Optional="true" />
+            </wsp:All>
+        </wsp:ExactlyOne>
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <ns4:BAAtomicOutcomeAssertion
+                    xmlns:ns4="http://schemas.xmlsoap.org/ws/2004/10/wsba" wsp:Optional="true" />
+            </wsp:All>
+            <wsp:All>
+                <ns3:BAAtomicOutcomeAssertion
+                    xmlns:ns3="http://docs.oasis-open.org/ws-tx/wsba/2006/06" wsp:Optional="true" />
+            </wsp:All>
         </wsp:ExactlyOne>
     </wsp:Policy>
 
@@ -55,8 +71,8 @@
     <wsdl:binding name="CallerServiceSoapBinding" type="tns:CallerService">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
         <wsdl:operation name="doSomething">
-            <wsp:PolicyReference URI="#ATPolicy" wsdl:required="true" />
             <soap:operation soapAction="" style="document" />
+            <wsp:PolicyReference xmlns:wsp="http://www.w3.org/ns/ws-policy" URI="#5093fdc2-0adc-4db7-839a-ac707aea7928"/>
             <wsdl:input name="doSomething">
                 <soap:body use="literal" />
             </wsdl:input>

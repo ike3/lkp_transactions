@@ -16,6 +16,7 @@ import javax.transaction.*;
 
 @Stateless(name = "CallerBeanImpl")
 @Local
+@TransactionManagement(TransactionManagementType.CONTAINER)
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 @Interceptors(SpringBeanAutowiringInterceptor.class)
 @Resources({@Resource(name = "jdbc/ZakupkiDevDS", type = DataSource.class)})
@@ -25,6 +26,7 @@ public class CallerBeanImpl implements Caller {
     private SomeDao dao;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public String doSomething(String parameter) {
         dao.logJournal("Caller is doing something with " + parameter);
 

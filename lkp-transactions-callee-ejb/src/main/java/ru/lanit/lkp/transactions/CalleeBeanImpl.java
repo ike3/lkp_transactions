@@ -22,6 +22,7 @@ public class CalleeBeanImpl implements Callee {
     private SomeDao dao;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.MANDATORY)
     public String doSomething(String parameter) {
         dao.logJournal("Callee is doing something with " + parameter);
 

@@ -18,6 +18,7 @@ public class CalleeServiceImpl implements CalleeService {
     Callee bean;
 
     @Override
+    @TransactionAttribute(TransactionAttributeType.MANDATORY)
     public String doSomething(@WebParam String parameter) {
         return bean.doSomething(parameter);
     }
