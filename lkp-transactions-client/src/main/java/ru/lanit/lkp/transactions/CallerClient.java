@@ -15,15 +15,15 @@ public class CallerClient {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        CallerService_Service serv = new CallerService_Service();
-        CallerService port = serv.getCallerServiceImplPort();
-//        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CallerService");
-//        Service service = Service.create(url, qname);
-//        CallerService port = service.getPort(CallerService.class);
+        //CallerService_Service serv = new CallerService_Service();
+        //CallerService port = serv.getCallerServiceImplPort();
+        QName qname = new QName("http://api.ws.transactions.lkp.lanit.ru/", "CallerService");
+        Service service = Service.create(url, qname);
+        CallerService port = service.getPort(CallerService.class);
 
         String endpointURL = "http://localhost:9082/caller/CallerService";
         BindingProvider bp = (BindingProvider)port;
-        //bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
+        bp.getRequestContext().put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpointURL);
 
         return port;
     }
