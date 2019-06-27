@@ -15,6 +15,7 @@ public class CallerBeanImpl implements Caller {
 
     @Inject
     private CalleeService callee;
+    //private CalleeNonTransactionalProxy callee;
 
     @Override
     public String doSomething(String parameter) {
