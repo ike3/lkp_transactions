@@ -49,8 +49,8 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CalleeService">
-    <wsdl:port binding="tns:CalleeServiceSoapBinding" name="CalleeServiceImplPort">
-      <soap:address location="http://172.18.0.7:8080/callee/CalleeService"/>
+    <wsdl:port binding="tns:CalleeServiceSoapBinding" name="CalleeServicePort">
+      <soap:address location="http://callee:8080/callee/CalleeService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

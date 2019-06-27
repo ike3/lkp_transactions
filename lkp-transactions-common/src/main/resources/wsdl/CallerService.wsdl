@@ -49,8 +49,8 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CallerService">
-    <wsdl:port binding="tns:CallerServiceSoapBinding" name="CallerServiceImplPort">
-      <soap:address location="http://172.18.0.9:8080/caller/CallerService"/>
+    <wsdl:port binding="tns:CallerServiceSoapBinding" name="CallerServicePort">
+      <soap:address location="http://caller:8080/caller/CallerService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

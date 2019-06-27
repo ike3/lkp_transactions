@@ -7,8 +7,9 @@ import javax.jws.*;
         serviceName = "CallerService",
         wsdlLocation = "/wsdl/CallerService.wsdl",
         endpointInterface = "ru.lanit.lkp.transactions.CallerService",
+        portName = "CallerServicePort",
         targetNamespace = "http://api.ws.transactions.lkp.lanit.ru/")
-@TransactionAttribute(TransactionAttributeType.MANDATORY)
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
 @Remote(CalleeService.class)
 public class CallerServiceImpl implements CallerService {
 
@@ -18,7 +19,10 @@ public class CallerServiceImpl implements CallerService {
     @Override
     @WebMethod
     public String doSomething(@WebParam String parameter) {
-        return bean.doSomething(parameter);
+        System.out.println("CALLER WEB SERVICE STARTED");
+        String result = bean.doSomething(parameter);
+        System.out.println("CALLER WEB SERVICE FINISHED");
+        return result;
     }
 
 }

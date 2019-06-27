@@ -24,15 +24,23 @@ public class CallerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("CALLER SERVLET STARTED");
+
         String name = req.getParameter("name");
         if (StringUtils.isEmpty(name)) {
             name = "(empty)";
         }
 
-        String result = caller.doSomething(name);
+        String result;
+        try {
+            result = caller.doSomething(name);
+        } catch (Exception e) {
+            result = e.getClass() + ": " + e.getMessage();
+        }
 
         req.setAttribute("result", result);
         req.getRequestDispatcher("WEB-INF/jsp/call.jsp").forward(req, resp);
+        System.out.println("CALLER SERVLET FINISHED");
     }
 
 }
