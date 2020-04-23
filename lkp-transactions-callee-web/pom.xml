@@ -21,7 +21,7 @@
         <slf4j.api.version>1.7.22</slf4j.api.version>
         <consul.api.version>1.4.1</consul.api.version>
         <javax.json.bind.api.version>1.0</javax.json.bind.api.version>
-        <jackson.databind.version>2.9.7</jackson.databind.version>
+        <jackson.databind.version>2.9.10.4</jackson.databind.version>
         <jackson.dataformat.yaml>2.9.7</jackson.dataformat.yaml>
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <commons.io.version>2.4</commons.io.version>
